@@ -4,7 +4,6 @@ struct Vector2
 {
 	float x, y;
 
-	Vector2() { x = 0; y = 0; }
 	Vector2(float x = 0, float y = 0) { Vector2::x = x; Vector2::y = y; }
 
 	Vector2 operator+ (Vector2 const& obj)

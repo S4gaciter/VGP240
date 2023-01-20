@@ -1,6 +1,8 @@
 SetResolution(21, 17, 25)
 
 // Outline
+
+// Black
 SetColor(0, 0, 0, 1)
 DrawPixel(3, 0)
 DrawPixel(4, 0)
@@ -255,4 +257,5 @@ DrawPixel(10, 5)
 DrawPixel(12, 11)
 DrawPixel(13, 12)
 DrawPixel(13, 13)
+
 
