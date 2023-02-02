@@ -9,10 +9,12 @@ public:
 	}
 	const char* GetDescription()
 	{
-		return "Vertex(x, y)"
-				"Vertex(x, y, z)"
-				"Vertex(x, y, r, g, b)"
-				"Vertex(x, y, z, r, g, b)";
+		return  "Vertex(x, y)\n"
+				"Vertex(x, y, z)\n"
+				"Vertex(x, y, r, g, b)\n"
+				"Vertex(x, y, z, r, g, b)\n"
+				"\n"
+				"- Adds a vertex to the primitives manager.";
 	}
 
 	bool Execute(const std::vector<std::string>& params);

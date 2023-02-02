@@ -20,9 +20,10 @@ public:
 
 	void DrawPoint(int x, int y);
 	
-	void DrawPoint(Vertex v);
-	void DrawLine(Vertex a, Vertex b);
-	void DrawTriangle(Vertex v1, Vertex v2, Vertex v3);
+	void DrawPoint(const Vertex& vertex);
+	void DrawLine(const Vertex& a, const Vertex& b);
+	void DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c);
+	void DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2);
 private:
 	X::Color mColor = X::Colors::White;
 	FillMode mFillMode = FillMode::Solid;

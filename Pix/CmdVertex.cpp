@@ -5,6 +5,7 @@ bool CmdVertex::Execute(const std::vector<std::string>& params)
 {
     Vertex v;
     v.color.w = 1.0f;
+
     if (params.size() == 2) // x, y
     {
         v.pos.x = stof(params[0]);

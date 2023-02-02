@@ -1,48 +1,63 @@
 #include "PrimitiveManager.h"
 #include "Rasterizer.h"
 
+PrimitiveManager* PrimitiveManager::Get()
+{
+    static PrimitiveManager sInstance;
+    return &sInstance;
+}
+
 bool PrimitiveManager::BeginDraw(Topology topology)
 {
-    mVertexBuffer.clear();
+    mDrawBegin = true;
     mTopology = topology;
+    mVertexBuffer.clear();
     return true;
 }
 
 void PrimitiveManager::AddVertex(Vertex vertex)
 {
-    mVertexBuffer.push_back(vertex);
+    if (mDrawBegin)
+    {
+        mVertexBuffer.push_back(vertex);
+    }
 }
 
 bool PrimitiveManager::EndDraw()
 {
-    Rasterizer *rasterizer = Rasterizer::Get();
-    Vertex previousVertex{};
+    if (!mDrawBegin)
+    {
+        return false;
+    }
+
     for (int x = 0; x <= mVertexBuffer.size(); x++)
     {
         switch (mTopology)
         {
         case Topology::Point:
-            rasterizer->DrawPoint(mVertexBuffer[x]);
+            for (size_t i = 0; i  < mVertexBuffer.size(); ++i)
+            {
+                Rasterizer::Get()->DrawPoint(mVertexBuffer[i]);
+            }
             break;
         case Topology::Line:
-            if (x < mVertexBuffer.size())
+            for (size_t i = 1; i < mVertexBuffer.size(); i += 2)
             {
-                rasterizer->DrawLine(mVertexBuffer[x], mVertexBuffer[x + 1]);
+                Rasterizer::Get()->DrawLine(mVertexBuffer[i - 1], mVertexBuffer[i]);
             }
             break;
         case Topology::Triangle:
-            if (x < mVertexBuffer.size() - 1)
+            for (size_t i = 2; i < mVertexBuffer.size(); i += 3)
             {
-                rasterizer->DrawTriangle(mVertexBuffer[x], mVertexBuffer[x + 1], mVertexBuffer[x + 2]);
+                Rasterizer::Get()->DrawTriangle(mVertexBuffer[i - 2], mVertexBuffer[i - 1], mVertexBuffer[i]);
             }
             break;
+        default:
+            return false;
         }
     }
-    return true;
-}
 
-PrimitiveManager *PrimitiveManager::Get()
-{
-    static PrimitiveManager instance;
-    return &instance;
+    mDrawBegin = false;
+
+    return true;
 }

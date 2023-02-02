@@ -30,4 +30,29 @@ struct Vector2
 		y = y / obj.y;
 		return Vector2(x, y);
 	}
+
+	Vector2 operator += (Vector2 const& obj)
+	{
+		x += obj.x;
+		y += obj.y;
+		return Vector2(x, y);
+	}
+	Vector2 operator -= (Vector2 const& obj)
+	{
+		x -= obj.x;
+		y -= obj.y;
+		return Vector2(x, y);
+	}
+	Vector2 operator *= (Vector2 const& obj)
+	{
+		x *= obj.x;
+		y *= obj.y;
+		return Vector2(x, y);
+	}
+	Vector2 operator /= (Vector2 const& obj)
+	{
+		x /= obj.x;
+		y /= obj.y;
+		return Vector2(x, y);
+	}
 };

@@ -34,4 +34,33 @@ struct Vector3
 		z = z / obj.z;
 		return Vector3(x, y, z);
 	}
+
+	Vector3 operator += (Vector3 const& obj)
+	{
+		x += obj.x;
+		y += obj.y;
+		z += obj.z;
+		return Vector3(x, y, z);
+	}
+	Vector3 operator -= (Vector3 const& obj)
+	{
+		x -= obj.x;
+		y -= obj.y;
+		z -= obj.z;
+		return Vector3(x, y, z);
+	}
+	Vector3 operator *= (Vector3 const& obj)
+	{
+		x *= obj.x;
+		y *= obj.y;
+		z *= obj.z;
+		return Vector3(x, y, z);
+	}
+	Vector3 operator /= (Vector3 const& obj)
+	{
+		x /= obj.x;
+		y /= obj.y;
+		z /= obj.z;
+		return Vector3(x, y, z);
+	}
 };

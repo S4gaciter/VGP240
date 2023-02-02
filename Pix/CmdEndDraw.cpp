@@ -8,5 +8,5 @@ bool CmdEndDraw::Execute(const std::vector<std::string>& params)
         return false;
     }
 
-    return true;
+    return PrimitiveManager::Get()->EndDraw();
 }
