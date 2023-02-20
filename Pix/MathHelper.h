@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Vector3.h"
+#include "Matrix4.h"
 
 namespace MathHelper
 {
@@ -19,4 +20,12 @@ namespace MathHelper
 	float Dot(Vector3 a, Vector3 b);
 
 	Vector3 Cross(Vector3 a, Vector3 b);
+
+	Vector3 TransformCoord(Vector3 v, Matrix4 m);
+	Vector3 TransformNormal(Vector3 v, Matrix4 m);
+
+	float Determinant(Matrix4 m);
+	Matrix4 Adjoint(Matrix4 m);
+	Matrix4 Transpose(Matrix4 m);
+	Matrix4 Inverse(Matrix4 m);
 }
