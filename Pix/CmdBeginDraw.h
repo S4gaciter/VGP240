@@ -9,7 +9,9 @@ public:
 	}
 	const char* GetDescription()
 	{
-		return "BeginDraw() takes vertex inputs for EndDraw().";
+		return "BeginDraw(topology, applyTransform)\n"
+			   "\n"
+			   "- Takes vertex inputs for EndDraw().";
 	}
 
 	bool Execute(const std::vector<std::string>& params);
