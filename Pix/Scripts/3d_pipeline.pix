@@ -7,7 +7,7 @@ ShowViewport(true)
 
 float $camX = 0
 float $camY = 0
-float $camZ = -5
+float $camZ = 0
 
 float $camDirX = 0
 float $camDirY = 0
