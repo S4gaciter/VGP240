@@ -12,16 +12,14 @@ enum class Topology
 class PrimitiveManager
 {
 public:
-	static PrimitiveManager *Get();
-
-	bool BeginDraw(Topology topology, bool applyTransform = false);
+	bool BeginDraw(Topology topology);
 	void AddVertex(Vertex vertex);
 	bool EndDraw();
 
+	static PrimitiveManager *Get();
 private:
 	std::vector<Vertex> mVertexBuffer;
 	Topology mTopology = Topology::Triangle;
 	bool mDrawBegin = false;
-	bool mApplyTransform = false;
 };
 
