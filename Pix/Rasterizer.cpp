@@ -1,5 +1,6 @@
 #include "Rasterizer.h"
 #include "MathHelper.h"
+#include "DepthBuffer.h"
 
 // Draw line where abs(m) > 0 and < 1
 void DrawLineLow(const Vertex& left, const Vertex& right)
@@ -50,8 +51,11 @@ void Rasterizer::DrawPoint(int x, int y)
 
 void Rasterizer::DrawPoint(const Vertex& v)
 {
-	SetColor(v.color);
-	DrawPoint(static_cast<int>(v.pos.x), static_cast<int>(v.pos.y));
+	if (DepthBuffer::Get()->CheckDepthBuffer(v.pos.x, v.pos.y, v.pos.z))
+	{
+		SetColor(v.color);
+		DrawPoint(static_cast<int>(v.pos.x), static_cast<int>(v.pos.y));
+	}
 }
 
 void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)
